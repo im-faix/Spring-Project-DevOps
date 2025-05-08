@@ -5,7 +5,7 @@ RUN mvn package
 RUN mv target/*.jar target/app.jar
 
 
-FROM java:17-slim
+FROM openjdk:21-jdk-slim
 WORKDIR /basic
 COPY --from=stage target/app.jar .
 CMD ["java". "-jar", "app.jar"]
