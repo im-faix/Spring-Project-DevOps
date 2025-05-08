@@ -7,5 +7,5 @@ RUN mv target/*.jar target/app.jar
 
 FROM java:17-slim
 WORKDIR /basic
-COPY --from=stage targer/app.jar .
-CMD ["java". "-jar", "target/app.jar"]
+COPY --from=stage target/app.jar .
+CMD ["java". "-jar", "app.jar"]
