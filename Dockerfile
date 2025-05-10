@@ -8,5 +8,5 @@ RUN mv target/*.jar target/app.jar
 
 FROM openjdk:21-jdk-slim
 WORKDIR /basic
-COPY --from=stage target/app.jar .
-CMD ["java". "-jar", "app.jar"]
+COPY --from=stage /app/target/app.jar .
+CMD ["java","-jar", "app.jar"]
