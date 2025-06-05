@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spring-webapp
-          image: faixan01/spring-webapp:2 # Replace with a tag like `123` if preferred
+          image: faixan01/spring-webapp:5  # Replace with your actual image tag
           ports:
             - containerPort: 9090
 
