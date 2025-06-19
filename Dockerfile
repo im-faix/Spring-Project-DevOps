@@ -1,4 +1,4 @@
-FROM ubuntu AS stage
+FROM ubuntu AS stage1
 WORKDIR /app
 COPY . .
 RUN apt-get update && apt-get install openjdk-17-jdk maven -y
@@ -8,5 +8,5 @@ RUN mv target/*.jar target/app.jar
 
 FROM openjdk:21-jdk-slim
 WORKDIR /basic
-COPY --from=stage /app/target/app.jar .
+COPY --from=stage1 /app/target/app.jar .
 CMD ["java","-jar", "app.jar"]
