@@ -1,0 +1,12 @@
+FROM maven:3.9.11-eclipse-temurin-17-alpine AS stage
+ENV TZ="Asia/Kolkata"
+WORKDIR /home
+COPY . .
+RUN mvn clean package -DskipTests 
+RUN mv target/*.jar target/myapp.jar
+
+FROM  eclipse-temurin:21-jdk
+WORKDIR /home
+COPY --from=stage /home/target/myapp.jar .
+EXPOSE 9090
+CMD [ "java","-jar","myapp.jar" ]
